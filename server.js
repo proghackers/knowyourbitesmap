@@ -17,19 +17,16 @@ mongoose.connect(dbConfig.url);
 var geoRoute = require('./app/routes/geodata.js');
 
 //middleware to use for all requests
-router.use(function(req, res, next) {
-    //log (Do analytics for all request , do a common task like verification here)
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    console.log("A request came:- " + fullUrl);
-    next(); //make sure we go to the next routes and not stop here
-});
-
 var myLogger = function(req, res, next) {
     //log (Do analytics for all request , do a common task like verification here)
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
     console.log("A request came:- " + fullUrl);
     next(); //make sure we go to the next routes and not stop here
 };
+
+// ================ SETUP HANDLEBARS FOR TEMPLATING ================
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 app.use(myLogger);
 
