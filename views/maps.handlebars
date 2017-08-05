@@ -1,0 +1,247 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 map-container">
+                <div id="map"></div>
+            </div>
+            <div id="list" class="col-md-4 places-container pull-right text-center">
+            </div>
+        </div>
+    </div>
+    <script>
+        var data = {{{geoData}}};
+        {{!-- var data = [{
+            "title": "Gopal Sweets",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7211,
+                "lng": 76.7595
+            }
+        }, {
+            "title": "Pal Dhaba",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7191,
+                "lng": 76.8016
+            }
+        }, {
+            "title": "Virgin Courtyard",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7344,
+                "lng": 76.7976
+            }
+        }, {
+            "title": "Barbeque Nation",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7260,
+                "lng": 76.8053
+            }
+        }, {
+            "title": "Whistling Duck",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7286,
+                "lng": 76.8032
+            }
+        }, {
+            "title": "La Pino'z Pizza",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7478,
+                "lng": 76.7930
+            }
+        }, {
+            "title": "Back Packers Cafe",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7052,
+                "lng": 76.8012
+            }
+        }]; --}}
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: data[0].position,
+            // How you would like to style the map.
+            // This is where you would paste any style found on Snazzy Maps.
+            styles: [{
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#242f3e"
+                }]
+            }, {
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#746855"
+                }]
+            }, {
+                "elementType": "labels.text.stroke",
+                "stylers": [{
+                    "color": "#242f3e"
+                }]
+            }, {
+                "featureType": "administrative.land_parcel",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "administrative.locality",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#d59563"
+                }, {
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "poi",
+                "elementType": "labels.text",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "poi",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#d59563"
+                }]
+            }, {
+                "featureType": "poi.business",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "poi.park",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#263c3f"
+                }]
+            }, {
+                "featureType": "poi.park",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#6b9a76"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#38414e"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "geometry.stroke",
+                "stylers": [{
+                    "color": "#212a37"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "labels.icon",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#9ca5b3"
+                }]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#746855"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [{
+                    "color": "#1f2835"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#f3d19c"
+                }]
+            }, {
+                "featureType": "road.local",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "road.local",
+                "elementType": "labels",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "transit",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            }, {
+                "featureType": "transit",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#2f3948"
+                }]
+            }, {
+                "featureType": "transit.station",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#d59563"
+                }]
+            }, {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#17263c"
+                }]
+            }, {
+                "featureType": "water",
+                "elementType": "labels.text.fill",
+                "stylers": [{
+                    "color": "#515c6d"
+                }]
+            }, {
+                "featureType": "water",
+                "elementType": "labels.text.stroke",
+                "stylers": [{
+                    "color": "#17263c"
+                }]
+            }]
+        });
+
+        function createMarker(pos, index) {
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                map.setCenter(marker.getPosition());
+                var elmnt = document.getElementById("hotelDiv" + index);
+                elmnt.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            })
+        }
+        for (var i = 0; i < data.length; i++) {
+            var divString = '<section id="hotelDiv' + i + '"><h2 class="title">' + data[i].title + '</h2><div class="content">' + data[i].description + '</div></section>';
+            $('#list').append(divString);
+            createMarker(data[i].position, i);
+        }
+    </script>

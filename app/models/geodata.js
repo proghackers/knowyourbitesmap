@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var geoItemSchema = mongoose.Schema({
+var geoItemSchema = {
     title: {
         type: String,
         required: true
@@ -17,9 +17,9 @@ var geoItemSchema = mongoose.Schema({
         type: Number,
         required: true
     }
-});
+};
 
-var geoDataSchema = mongoose.Schema({
+var geoDataSchema = new mongoose.Schema({
     id: {
         type: String,
         index: true,

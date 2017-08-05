@@ -15,6 +15,14 @@ mongoose.connect(dbConfig.url);
 
 // ================ ROUTES ================
 var geoRoute = require('./app/routes/geodata.js');
+var mapsRoute = require('./app/routes/maps.js');
+
+// ================ EXPRESS SETUP ================
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 //middleware to use for all requests
 var myLogger = function(req, res, next) {
@@ -31,11 +39,11 @@ app.set('view engine', 'handlebars');
 app.use(myLogger);
 
 // ================ DEFINE ROUTES ================
-app.use('/maps', geoRoute);
+app.use('/geodata', geoRoute);
+app.use('/maps', mapsRoute);
 
-// ================ EXPRESS SETUP ================
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//START THE SERVER
+// ======================================================
+var port = 1337; //set our port
+app.listen(port);
+console.log('Server running at port :- ' + port);
