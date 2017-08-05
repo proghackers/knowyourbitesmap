@@ -16,6 +16,7 @@ node server.js
 Things to do :
 
 How does one add a new location to the map ?
+adding css non inline. 
 
 
 
