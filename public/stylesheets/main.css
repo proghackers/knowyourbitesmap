@@ -6,13 +6,16 @@
     border-top: 1px solid #e5e5e5;
 }
 
-#map {
-    width: 100%;
-    height: 80vh;
-}
 
 section {
     width: 100%;
     height: 100vh;
     padding: 15px;
 }
+
+  html, body, #map{
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
