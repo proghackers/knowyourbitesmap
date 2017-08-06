@@ -8,6 +8,8 @@ router.route('/:maps_id')
         GeoData.findOne({ id: req.params.maps_id }, function(err, geodata) {
             if (err) {
                 res.send(err);
+            } else if (geodata === null) {
+                res.render('404');
             } else {
                 res.render('maps', {
                     geoData: JSON.stringify(geodata.geoitems)
