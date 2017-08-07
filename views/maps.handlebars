@@ -1,7 +1,9 @@
 
     <div class="container">
         <div class="row">
-            <div id="map"></div>
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
             <div id="list" class="col-md-4 places-container pull-right text-center">
             </div>
         </div>
@@ -61,8 +63,6 @@
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
             center: data[0].position,
-            // How you would like to style the map.
-            // This is where you would paste any style found on Snazzy Maps.
             styles: [{
                 "elementType": "geometry",
                 "stylers": [{
@@ -222,6 +222,7 @@
                     "color": "#17263c"
                 }]
             }]
+
         });
 
         function createMarker(pos, index) {

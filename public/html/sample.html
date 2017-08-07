@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTlEekwbswUIlPGbKbVqWOAgELg7wM18"></script>
+    <style>
+        body,
+        html,
+        .row {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .map-container {
+            height: 100%;
+            position: fixed;
+            padding: 0px;
+        }
+        
+        section {
+            width: 100%;
+            height: 100vh;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 map-container">
+                <div id="map"></div>
+            </div>
+            <div id="list" class="col-md-4 places-container pull-right text-center">
+            </div>
+        </div>
+    </div>
+    <script>
+        var data = [{
+            "title": "Gopal Sweets",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7211,
+                "lng": 76.7595
+            }
+        }, {
+            "title": "Pal Dhaba",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7191,
+                "lng": 76.8016
+            }
+        }, {
+            "title": "Virgin Courtyard",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7344,
+                "lng": 76.7976
+            }
+        }, {
+            "title": "Barbeque Nation",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7260,
+                "lng": 76.8053
+            }
+        }, {
+            "title": "Whistling Duck",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7286,
+                "lng": 76.8032
+            }
+        }, {
+            "title": "La Pino'z Pizza",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7478,
+                "lng": 76.7930
+            }
+        }, {
+            "title": "Back Packers Cafe",
+            "description": "Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaa Yadabada dabada doobada deebabdaaYadabada dabada doobada deebabdaa",
+            "position": {
+                "lat": 30.7052,
+                "lng": 76.8012
+            }
+        }];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: data[0].position
+        });
+
+        function createMarker(pos, index) {
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                map.setCenter(marker.getPosition());
+                var elmnt = document.getElementById("hotelDiv" + index);
+                elmnt.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            })
+        }
+        for (var i = 0; i < data.length; i++) {
+            var divString = '<section id="hotelDiv' + i + '"><h2 class="title">' + data[i].title + '</h2><div class="content">' + data[i].description + '</div></section>';
+            $('#list').append(divString);
+            createMarker(data[i].position, i);
+        }
+    </script>
+</body>
+
+</html>
