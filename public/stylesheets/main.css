@@ -14,3 +14,23 @@ section {
     height: 80vh;
     width: 100%;
 }
+
+#list {
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	z-index: 4;
+	background-color: white ;
+	border : 1px solid white;
+}
+
+@media only screen and (max-width: 900px) {
+
+	#list {
+		z-index: 5;
+		overflow: hidden;
+		overflow-y:auto;
+		height: 200px;
+		display: inline;
+	}
+}
