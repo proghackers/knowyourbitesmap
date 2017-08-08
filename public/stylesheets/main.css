@@ -6,23 +6,51 @@
 
 section {
     width: 100%;
-    height: 100vh;
-    padding: 15px;
+    height: 70vh;
+    padding: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+span#number {
+    color: #ff6800;
+    font-size: .9em;
+    font-weight: bold;
 }
 
 #map {
-    height: 80vh;
+    height: 100vh;
     width: 100%;
 }
 
+
+
 #list {
+	
 	height: 500px;
 	overflow: hidden;
 	overflow-y: auto;
 	z-index: 4;
 	background-color: white ;
 	border : 1px solid white;
+	font-family: 'Montserrat', sans-serif;
+	padding:0px;
+
 }
+
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 
 @media only screen and (max-width: 900px) {
 
@@ -33,4 +61,17 @@ section {
 		height: 200px;
 		display: inline;
 	}
+	#map {
+		height:60vh;
+	}
+}
+
+@media only screen and (min-width:900px) {
+
+#list
+{
+	position: absolute;
+	top: 5em;
+	left: .75em;
+}
 }
